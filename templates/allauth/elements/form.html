@@ -3,6 +3,7 @@
 <form class="{% block form_class %}{% if not attrs.no_visible_fields %}card{% endif %}{% endblock %}"
       method="{{ attrs.method }}"
       action="{{ attrs.action }}">
+      {% csrf_token %}
     {% if not attrs.no_visible_fields %}<div class="card-body">{% endif %}
         {% slot body %}
         {% endslot %}

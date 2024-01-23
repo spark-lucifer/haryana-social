@@ -56,6 +56,7 @@
     editor.on("input", showHTMLInIFrame);
 </script>
 <form method="post">
+    {% csrf_token %}
     <div class="form-group text-white">
       <label for="formGroupExampleInput">Upload Game</label>
       <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Game Name" name="game_name">
