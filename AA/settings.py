@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-z1$efrot$cg)1p7z6-w2enb*d8fw5dcg6=oq)0z#(h!(lsv#gb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['haryana.azurewebsites.net']
 
 AUTHENTICATION_BACKENDS = [
   
