@@ -6,6 +6,8 @@ from django.views.generic import UpdateView, DeleteView
 from .models import Post, Comment, UserProfile,Game
 from .forms import PostForm, CommentForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+def game(request):
+    return render(request,'social/alex.html')
 class PostListView(LoginRequiredMixin,View):
     def get (self,request,*args,**kwargs):
         userprofile = UserProfile.objects.all()
