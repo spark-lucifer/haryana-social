@@ -128,6 +128,34 @@ class AddDislike(LoginRequiredMixin,View):
             post.dislikes.add(request.user)
 
         return redirect(request.POST.get('next', '/'))
+
+class AddCommentLike(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        comment = Commentcomment.objects.get(pk=pk)
+
+        if request.user in post.dislikes.all():
+            comment.dislikes.remove(request.user)
+
+        if request.user in post.likes.all():
+            comment.likes.remove(request.user)
+        else:
+            comment.likes.add(request.user)
+
+        return redirect(request.POST.get('next', '/'))
+class AddCommentDislike(LoginRequiredMixin,View):
+    
+    def post(self, request, pk, *args, **kwargs):
+        comment = Post.objects.get(pk=pk)
+
+        if request.user in post.likes.all():
+            comment.likes.remove(request.user)
+
+        if request.user in post.dislikes.all():
+            comment.dislikes.remove(request.user)
+        else:
+            comment.dislikes.add(request.user)
+
+        return redirect(request.POST.get('next', '/'))
 class Code(LoginRequiredMixin,View):
     def get(self,request,*args,**kwargs):
         return render(request,'social/code.html')

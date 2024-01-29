@@ -16,6 +16,8 @@ class Comment(models.Model):
     created_on = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    likes = models.ManyToManyField(User, related_name='comment_likes', blank=True)
+    dislikes = models.ManyToManyField(User, related_name='comment_dislikes', blank=True)
 class UserProfile(models.Model):
     user = models.OneToOneField(User,primary_key=True,verbose_name='user',related_name='profile', on_delete=models.CASCADE)
     name = models.CharField(max_length=100,blank=True,null=True)
