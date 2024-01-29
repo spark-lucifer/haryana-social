@@ -148,3 +148,13 @@ class Code(LoginRequiredMixin,View):
         }
 
         return render(request, 'social/index.html', context)
+
+class ProfileEditView(LoginRequiredMixin,UpdateView):
+    model = UserProfile
+    fields = ['name','bio','birth_date','location','profile_pic']
+    template_name = 'social/profile_edit.html'
+    def get_success_url(self):
+        return reverse_lazy('profile',kwargs={'pk':self.object.pk})
+    def test_func(self) :
+        profile = self.get_object()
+        return self.request.user == profile.user

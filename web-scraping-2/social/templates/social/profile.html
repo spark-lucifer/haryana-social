@@ -236,7 +236,14 @@ a{
             <div class="row align-items-center flex-row-reverse">
                 <div class="col-lg-6">
                     <div class="about-text go-to p-2" style="background: linear-gradient(to top, #bdc3c7, #2c3e50); min-height:80vh ;">
-                        <h3 ><strong style="color: #fff;">About Me</strong></h3>
+                        <h3 ><strong style="color: #fff;">
+                            {% if profie.name %}
+                            
+                            {{ user.username }}
+                            {% else %}
+                            {{ request.user }}
+                            {% endif %}
+                        </strong></h3>
                         <h6 class="theme-color lead border-bottom pb-2" style="color: #b0bec5;">Model to be added</h6>
                         <p style="color: #94acb8;">{{profile.bio}}</p>
                         <div class="row about-list">
@@ -271,6 +278,7 @@ a{
                             
                             </div>
                         </div>
+                        <a href="{% url 'profile-edit' profile.pk %}"> <button class="btn btn-success">Edit</button></a>
                        <a href="{% url 'account_logout' %}"> <button class="btn btn-danger">Sign out</button></a>
                     </div>
                 </div>
