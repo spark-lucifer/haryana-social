@@ -76,8 +76,8 @@ def home(request):
         post = LinkPost.objects.create(title=title, body=body, link=link, link1=link1, link2=link2, author=request.user)
         # Redirect to the home view
         return redirect('index')
-
+    host = LinkPost.objects.all().order_by('-created_on')
     # Call the function with the URL and store the result in the 'content' variable
 
     # Pass the 'content' variable to the template
-    return render(request, 'zoom/index.html', {'content':content})
+    return render(request, 'zoom/index.html', {'content':content,'host':host})
