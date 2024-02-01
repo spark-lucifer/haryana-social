@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
+from .models import LinkPost
 
 def scrape_website(url):
     # Set up a Selenium WebDriver
@@ -60,7 +61,23 @@ def extract_content_list(soup):
         })
     return content_list
 # Call the function with the URL and store the result in the 'content' variable
+
 content = scrape_website('https://aa-intergroup.org/meetings/')
 def home(request):
+    # Check if the request method is POST
+    if request.method == 'POST':
+        # Process the form data
+        title = request.POST['title']
+        body = request.POST['body']
+        link = request.POST['link']
+        link1 = request.POST['link1']
+        link2 = request.POST['link2']
+        # Create a new LinkPost object
+        post = LinkPost.objects.create(title=title, body=body, link=link, link1=link1, link2=link2, author=request.user)
+        # Redirect to the home view
+        return redirect('index')
+
+    # Call the function with the URL and store the result in the 'content' variable
+
     # Pass the 'content' variable to the template
     return render(request, 'zoom/index.html', {'content':content})
