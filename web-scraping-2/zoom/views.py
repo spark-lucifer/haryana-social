@@ -1,11 +1,21 @@
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 from .models import LinkPost
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic.edit import DeleteView
 
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = LinkPost
+    template_name = 'zoom/link-delete.html'
+    success_url = reverse_lazy('index')
+    def test_func(self) :
+        post = self.get_object()
+        return self.request.user == post.author
 def scrape_website(url):
     # Set up a Selenium WebDriver
     options = webdriver.ChromeOptions()

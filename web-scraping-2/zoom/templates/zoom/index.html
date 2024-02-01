@@ -452,7 +452,7 @@ setTimeout(() => {
         <h5 class="card-header">Featured 
           {% if item.author == request.user %}
                 <a href="{#}" style="color:#fff;" class="position-relative"><i class="fa fa-edit"></i></a>
-                <a href="{#}" style="color:#fff;" class="position-relative"><i class="fa fa-trash"></i></a></p>
+                <a href="{% url 'link-delete' item.pk %}" style="color:#fff;" class="position-relative"><i class="fa fa-trash"></i></a></p>
             {% endif %}</h2> 
         </h5>
         <div class="card-body">
