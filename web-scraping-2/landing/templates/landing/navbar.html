@@ -164,19 +164,18 @@ nav {
     <img src="https://i.imgur.com/HpGoS3G.png" alt="Logo" class="logo">
 
     <ul class="nav-links">
-        <li><a href="https://sudo-choices.vercel.app/#homeSection">Home</a></li>
-        <li><a href="https://sudo-choices.vercel.app/#aboutTeam">About Team: <strong>Sudo</strong></a></li>
-        <li><a href="https://sudo-choices.vercel.app/#aboutProject">About Project</a></li>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="https://sudo-choices.vercel.app/">Choices</strong></a></li>
+        <li><a href="https://sudo-choices.vercel.app/Dynamic-Game/index.html">Dynamic Game</a></li>
         <li><a href="{% url 'profile' user.profile.pk %}" class="ai-button">Profile</a></li>
     </ul>
     <button class="hamburger-menu" onclick="toggleMenu()"></button>
     <div class="menu-overlay">
         <ul class="menu-overlay-items">
             <li><a href="https://sudo-choices.vercel.app/#homeSection" onclick="hideMenu()">Home</a></li>
-            <li><a href="https://sudo-choices.vercel.app/#aboutTeam" onclick="hideMenu()">About Team:
-                    <strong>Sudo</strong></a></li>
-            <li><a href="https://sudo-choices.vercel.app/#aboutProject" onclick="hideMenu()">About Project</a></li>
-            <li><a onclick="comingSoon(this)" class="ai-button">Ai Counselling</a></li>
+            <li><a href="https://sudo-choices.vercel.app/">Choices</a></li>
+            <li><a href="https://sudo-choices.vercel.app/Dynamic-Game/index.html">Dynamic-Game</a></li>
+            <li><a href="{% url 'profile' user.profile.pk %}" class="ai-button">Profile</a></li>
         </ul>
     </div>
 </nav>
